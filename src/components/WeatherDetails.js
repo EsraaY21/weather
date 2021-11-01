@@ -1,32 +1,12 @@
 import { FaMapMarkerAlt, FaArrowUp, FaArrowDown } from 'react-icons/fa';
-import {
-  BsFillCloudRainFill,
-  BsFillCloudsFill,
-  BsFillCircleFill,
-} from 'react-icons/bs';
-import { RiMistFill } from 'react-icons/ri';
 import { useState } from 'react';
+import { icons } from './icons';
 
 const WeatherDetails = ({ data }) => {
   const [city, setCity] = useState('london');
 
   const searchNewCity = () => {
     console.log(city);
-  };
-
-  const icons = {
-    Rain: (
-      <BsFillCloudRainFill className="h-1/4 w-1/4 mx-auto my-6 transition-all duration-700 ease-out" />
-    ),
-    Clouds: (
-      <BsFillCloudsFill className="h-1/4 w-1/4 mx-auto my-6 transition-all duration-700 ease-out" />
-    ),
-    Clear: (
-      <BsFillCircleFill className="h-1/4 w-1/4 mx-auto my-6 transition-all duration-700 ease-out" />
-    ),
-    Mist: (
-      <RiMistFill className="h-1/4 w-1/4 mx-auto my-6 transition-all duration-700 ease-out" />
-    ),
   };
 
   const onSubmitHandler = (event) => {
