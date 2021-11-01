@@ -1,19 +1,19 @@
 import WeatherDetails from './components/WeatherDetails';
 
 const data = {
-  city: 'city',
+  city: 'Europe/London',
   time: `time`,
   date: `date`,
-  weekday: 'weekday',
-  icon: 'icon',
-  temp: 'temp',
-  main: '',
-  temp_max: 'temp_max',
-  temp_min: 'temp_min',
-  feels_like: 'feels_like',
-  humidity: 'humidity',
-  wind: 'wind',
-  uv: 'uv',
+  weekday: 'Thursday',
+  icon: '03d',
+  temp: '27',
+  main: 'Clouds',
+  temp_max: '28',
+  temp_min: '27',
+  feels_like: '26',
+  humidity: '80',
+  wind: '8',
+  uv: '2',
   // next_four_days: '',
 };
 

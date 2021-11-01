@@ -57,8 +57,7 @@ const WeatherDetails = ({ data }) => {
             </div>
 
             <div className="additional-data">
-              {/* {icons[data.main]} */}
-              {icons[data.main ? data.main : 'Rain']}
+              {icons[data.main ? data.main : 'Clouds']}
               <div className="temp flex  mb-4">
                 <div className="text-7xl font-medium">{data.temp}°C</div>
                 <div className="self-end ml-4 ">
