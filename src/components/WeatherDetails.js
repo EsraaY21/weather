@@ -21,7 +21,7 @@ const WeatherDetails = ({ data }) => {
           data.icon[data.icon.length - 1] === 'd' ? 'day' : 'night'
         } transition-all duration-500 ease-out bg-no-repeat bg-cover bg-center h-screen`}
       >
-        <div className="shadow-xl app-inner h-app w-96 mx-auto my-auto  bg-no-repeat bg-cover bg-center rounded-md text-white">
+        <div className="app-inner shadow-xl  h-app w-96 mx-auto my-auto  rounded-md text-white">
           <div className="overlay  animate-fade bg-black p-8 rounded-md h-app bg-opacity-50">
             <div className="search mb-4 flex justify-around ">
               <form onSubmit={onSubmitHandler}>
@@ -57,7 +57,8 @@ const WeatherDetails = ({ data }) => {
             </div>
 
             <div className="additional-data">
-              {icons[data.main]}
+              {/* {icons[data.main]} */}
+              {icons[data.main ? data.main : 'Rain']}
               <div className="temp flex  mb-4">
                 <div className="text-7xl font-medium">{data.temp}°C</div>
                 <div className="self-end ml-4 ">

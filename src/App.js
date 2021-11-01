@@ -7,7 +7,7 @@ const data = {
   weekday: 'weekday',
   icon: 'icon',
   temp: 'temp',
-  main: 'main',
+  main: '',
   temp_max: 'temp_max',
   temp_min: 'temp_min',
   feels_like: 'feels_like',
