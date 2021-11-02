@@ -1,11 +1,13 @@
 import WeatherDetails from './components/WeatherDetails';
+import { fetchCoords, fetchData, getWeatherDetails } from './API';
+import { useState } from 'react';
 
-const data = {
+const initialState = {
   city: 'Europe/London',
   time: `time`,
   date: `date`,
   weekday: 'Thursday',
-  icon: '03d',
+  icon: '03n',
   temp: '27',
   main: 'Clouds',
   temp_max: '28',
@@ -18,9 +20,22 @@ const data = {
 };
 
 const App = () => {
+  const [weatherDetails, setWeatherDetails] = useState(initialState);
+
+  const handleNewCity = async (city) => {
+    try {
+      const coords = await fetchCoords(city);
+      const data = await fetchData(coords);
+      const weatherDetails = getWeatherDetails(data);
+      setWeatherDetails(weatherDetails);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
   return (
     <div>
-      <WeatherDetails data={data} />
+      <WeatherDetails data={weatherDetails} searchNewCity={handleNewCity} />
     </div>
   );
 };

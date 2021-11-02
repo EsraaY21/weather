@@ -2,12 +2,8 @@ import { FaMapMarkerAlt, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { useState } from 'react';
 import { icons } from './icons';
 
-const WeatherDetails = ({ data }) => {
+const WeatherDetails = ({ data, searchNewCity }) => {
   const [city, setCity] = useState('london');
-
-  const searchNewCity = () => {
-    console.log(city);
-  };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();

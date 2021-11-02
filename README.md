@@ -5,3 +5,6 @@ openweathermap
 react
 tailwind
 react icons
+
+freepik attribution 
+<a href="https://www.freepik.com/vectors/banner">Banner vector created by sentavio - www.freepik.com</a>
