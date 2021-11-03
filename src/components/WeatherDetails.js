@@ -1,9 +1,9 @@
 import { FaMapMarkerAlt, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { useState } from 'react';
-import { icons } from './icons';
+import { icons_main, icons_small } from './icons';
 
 const WeatherDetails = ({ data, searchNewCity }) => {
-  const [city, setCity] = useState('london');
+  const [city, setCity] = useState('London');
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -15,10 +15,10 @@ const WeatherDetails = ({ data, searchNewCity }) => {
       <div
         className={`pt-8 bg-${
           data.icon[data.icon.length - 1] === 'd' ? 'day' : 'night'
-        } transition-all duration-500 ease-out bg-no-repeat bg-cover bg-center h-screen`}
+        } transition-all duration-500 ease-out bg-no-repeat bg-cover bg-center min-h-screen`}
       >
-        <div className="app-inner shadow-xl  h-app w-96 mx-auto my-auto  rounded-md text-white">
-          <div className="overlay  animate-fade bg-black p-8 rounded-md h-app bg-opacity-50">
+        <div className="app-inner shadow-xl w-96 mx-auto my-auto  rounded-md text-white ">
+          <div className="overlay  animate-fade bg-black p-8 rounded-md bg-opacity-75">
             <div className="search mb-4 flex justify-around ">
               <form onSubmit={onSubmitHandler}>
                 <input
@@ -53,7 +53,7 @@ const WeatherDetails = ({ data, searchNewCity }) => {
             </div>
 
             <div className="additional-data">
-              {icons[data.main ? data.main : 'Clouds']}
+              {icons_main[data.main ? data.main : 'Clouds']}
               <div className="temp flex  mb-4">
                 <div className="text-7xl font-medium">{data.temp}°C</div>
                 <div className="self-end ml-4 ">
@@ -84,7 +84,7 @@ const WeatherDetails = ({ data, searchNewCity }) => {
                   <p className="text-sm text-gray-100">Humidity</p>
                   <p className="text-lg ">
                     {data.humidity}
-                    <span className="text-xs text-gray-100"> %</span>
+                    <span className="text-xs text-gray-100">%</span>
                   </p>
                 </div>
                 <div className="px-2 border-r-2">
@@ -102,24 +102,68 @@ const WeatherDetails = ({ data, searchNewCity }) => {
 
               <div className="days flex justify-between">
                 <div className="px-2">
-                  <p className="text-base text-gray-100  ">Thu</p>
-                  <p className="my-2">icon</p>
-                  <p className="text-sm">26°/26°</p>
+                  <p className="text-base text-gray-100">Fri</p>
+                  <p className="w-10">
+                    {
+                      icons_small[
+                        data.next_four_days[0].main
+                          ? data.next_four_days[0].main
+                          : 'Clouds'
+                      ]
+                    }
+                  </p>
+                  <p className="text-sm">
+                    {data.next_four_days[0].temp_max}°/
+                    {data.next_four_days[0].temp_min}°
+                  </p>
                 </div>
                 <div className="px-2">
-                  <p className="text-base text-gray-100  ">Fri</p>
-                  <p className=" my-2">icon</p>
-                  <p className="text-sm">26°/26°</p>
+                  <p className="text-base text-gray-100">Fri</p>
+                  <p className="w-10">
+                    {
+                      icons_small[
+                        data.next_four_days[1].main
+                          ? data.next_four_days[1].main
+                          : 'Clouds'
+                      ]
+                    }
+                  </p>
+                  <p className="text-sm">
+                    {data.next_four_days[1].temp_max}°/
+                    {data.next_four_days[1].temp_min}°
+                  </p>
                 </div>
                 <div className="px-2">
-                  <p className="text-base text-gray-100  ">Sat</p>
-                  <p className="my-2">icon</p>
-                  <p className="text-sm">26°/26°</p>
+                  <p className="text-base text-gray-100">Sat</p>
+                  <p className="w-10">
+                    {
+                      icons_small[
+                        data.next_four_days[2].main
+                          ? data.next_four_days[2].main
+                          : 'Clouds'
+                      ]
+                    }
+                  </p>
+                  <p className="text-sm">
+                    {data.next_four_days[2].temp_max}°/
+                    {data.next_four_days[2].temp_min}°
+                  </p>
                 </div>
                 <div className="px-2">
                   <p className="text-base text-gray-100  ">Sun</p>
-                  <p className="  my-2">icon</p>
-                  <p className="text-sm">26°/26°</p>
+                  <p className="w-10">
+                    {
+                      icons_small[
+                        data.next_four_days[3].main
+                          ? data.next_four_days[3].main
+                          : 'Clouds'
+                      ]
+                    }
+                  </p>
+                  <p className="text-sm">
+                    {data.next_four_days[3].temp_max}°/
+                    {data.next_four_days[3].temp_min}°
+                  </p>
                 </div>
               </div>
             </div>

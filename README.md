@@ -6,5 +6,8 @@ react
 tailwind
 react icons
 
-freepik attribution 
-<a href="https://www.freepik.com/vectors/banner">Banner vector created by sentavio - www.freepik.com</a>
+freepik attribution
+
+<a href='https://www.freepik.com/vectors/tree'>Tree vector created by upklyak - www.freepik.com</a>
+
+<a href='https://www.freepik.com/vectors/tree'>Tree vector created by jcomp - www.freepik.com</a>

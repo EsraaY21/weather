@@ -1,42 +1,51 @@
 import WeatherDetails from './components/WeatherDetails';
+import { useEffect, useState } from 'react';
 import { fetchCoords, fetchData, getWeatherDetails } from './API';
-import { useState } from 'react';
-
-const initialState = {
-  city: 'Europe/London',
-  time: `time`,
-  date: `date`,
-  weekday: 'Thursday',
-  icon: '03n',
-  temp: '27',
-  main: 'Clouds',
-  temp_max: '28',
-  temp_min: '27',
-  feels_like: '26',
-  humidity: '80',
-  wind: '8',
-  uv: '2',
-  // next_four_days: '',
-};
+import { CgSpinner } from 'react-icons/cg';
 
 const App = () => {
-  const [weatherDetails, setWeatherDetails] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [weatherDetails, setWeatherDetails] = useState(null);
 
   const handleNewCity = async (city) => {
     try {
+      setError(false);
+      setLoading(true);
       const coords = await fetchCoords(city);
       const data = await fetchData(coords);
       const weatherDetails = getWeatherDetails(data);
       setWeatherDetails(weatherDetails);
     } catch (error) {
-      console.log('error');
+      setError(true);
     }
+    setLoading(false);
   };
 
+  useEffect(() => {
+    handleNewCity('London');
+  }, []);
+
+  if (error === true) {
+    return (
+      <h1 className="text-center">
+        An error happened. Please try again another time.
+      </h1>
+    );
+  }
+
   return (
-    <div>
-      <WeatherDetails data={weatherDetails} searchNewCity={handleNewCity} />
-    </div>
+    <>
+      {weatherDetails ? (
+        <div>
+          <WeatherDetails data={weatherDetails} searchNewCity={handleNewCity} />
+        </div>
+      ) : (
+        <div className="text-center flex h-screen">
+          <CgSpinner className="animate-spin m-auto h-1/4 w-1/4" />
+        </div>
+      )}
+    </>
   );
 };
 

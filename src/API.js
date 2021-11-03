@@ -15,7 +15,6 @@ export const fetchCoords = async (city) => {
 export const fetchData = async (coords) => {
   const { lat, lon } = coords;
   const endpoint = `${API_DATA.BASE_DATA}${lat}&lon=${lon}&exclude=minutely,hourly&units=metric&appid=${API_KEY}`;
-  console.log(endpoint);
   const response = await fetch(endpoint);
   const data = await response.json();
   return await data;
@@ -53,7 +52,33 @@ export const getWeatherDetails = (data) => {
     humidity: Math.floor(data.current.humidity),
     wind: Math.floor(data.current.wind_speed),
     uv: data.current.uvi,
-    // next_four_days: '',};
+    next_four_days: [
+      {
+        day: '',
+        main: data.daily[0].weather[0].main,
+        temp_max: Math.floor(data.daily[0].temp.max),
+        temp_min: Math.floor(data.daily[0].temp.min),
+      },
+      {
+        day: '',
+        main: data.daily[1].weather[0].main,
+        temp_max: Math.floor(data.daily[1].temp.max),
+        temp_min: Math.floor(data.daily[1].temp.min),
+      },
+      {
+        day: '',
+        main: data.daily[2].weather[0].main,
+        temp_max: Math.floor(data.daily[2].temp.max),
+        temp_min: Math.floor(data.daily[2].temp.min),
+      },
+      {
+        day: '',
+        main: data.daily[3].weather[0].main,
+        temp_max: Math.floor(data.daily[3].temp.max),
+        temp_min: Math.floor(data.daily[3].temp.min),
+      },
+    ],
   };
+  console.log(data.daily[0].weather[0].main);
   return weatherDetails;
 };

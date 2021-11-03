@@ -1,3 +1,7 @@
 .main_icon {
-  @apply h-1/4 w-1/4 mx-auto my-6 transition-all duration-700 ease-out;
+  @apply h-1/4 w-1/4 py-6 mx-auto transition-all duration-700 ease-out;
+}
+
+.small_icon {
+  @apply w-3/4 h-3/4 py-2;
 }
