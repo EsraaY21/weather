@@ -1,4 +1,4 @@
-import { API_KEY } from './apikey';
+import { api as API_KEY } from './api';
 
 export const API_DATA = {
   BASE_COORDS: 'https://api.openweathermap.org/data/2.5/weather',
