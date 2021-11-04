@@ -1,9 +1,19 @@
-const API_KEY = '93c60de7ecd7e35e2f18235a97afc3d9';
+import { API_KEY } from './apikey';
 
 export const API_DATA = {
   BASE_COORDS: 'https://api.openweathermap.org/data/2.5/weather',
   BASE_DATA: 'https://api.openweathermap.org/data/2.5/onecall?lat=',
 };
+
+var arrayOfWeekdays = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
 
 export const fetchCoords = async (city) => {
   const endpoint = `${API_DATA.BASE_COORDS}?q=${city}&units=metric&APPID=${API_KEY}`;
@@ -20,6 +30,13 @@ export const fetchData = async (coords) => {
   return await data;
 };
 
+export const getWeekDay = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const weekdayNum = date.getUTCDay();
+  const weekday = arrayOfWeekdays[weekdayNum].slice(0, 3);
+  return weekday;
+};
+
 export const getWeatherDetails = (data) => {
   const date = new Date(data.current.dt * 1000);
   const hours = date.getHours();
@@ -27,16 +44,6 @@ export const getWeatherDetails = (data) => {
   const day = date.getDate();
   const month = date.getMonth();
   const weekday = date.getUTCDay();
-
-  var arrayOfWeekdays = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
 
   const weatherDetails = {
     city: data.timezone,
@@ -54,31 +61,30 @@ export const getWeatherDetails = (data) => {
     uv: data.current.uvi,
     next_four_days: [
       {
-        day: '',
-        main: data.daily[0].weather[0].main,
-        temp_max: Math.floor(data.daily[0].temp.max),
-        temp_min: Math.floor(data.daily[0].temp.min),
-      },
-      {
-        day: '',
+        day: data.daily[1].dt,
         main: data.daily[1].weather[0].main,
         temp_max: Math.floor(data.daily[1].temp.max),
         temp_min: Math.floor(data.daily[1].temp.min),
       },
       {
-        day: '',
+        day: data.daily[2].dt,
         main: data.daily[2].weather[0].main,
         temp_max: Math.floor(data.daily[2].temp.max),
         temp_min: Math.floor(data.daily[2].temp.min),
       },
       {
-        day: '',
+        day: data.daily[3].dt,
         main: data.daily[3].weather[0].main,
         temp_max: Math.floor(data.daily[3].temp.max),
         temp_min: Math.floor(data.daily[3].temp.min),
       },
+      {
+        day: data.daily[4].dt,
+        main: data.daily[4].weather[0].main,
+        temp_max: Math.floor(data.daily[4].temp.max),
+        temp_min: Math.floor(data.daily[4].temp.min),
+      },
     ],
   };
-  console.log(data.daily[0].weather[0].main);
   return weatherDetails;
 };

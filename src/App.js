@@ -17,7 +17,7 @@ const App = () => {
       const weatherDetails = getWeatherDetails(data);
       setWeatherDetails(weatherDetails);
     } catch (error) {
-      setError(true);
+      setError('error');
     }
     setLoading(false);
   };
@@ -28,17 +28,23 @@ const App = () => {
 
   if (error === true) {
     return (
-      <h1 className="text-center">
-        An error happened. Please try again another time.
-      </h1>
+      <div className="h-screen bg-green">
+        <h1 className="text-center">An error happened. Please try again.</h1>
+        <button></button>
+      </div>
     );
   }
 
+  console.log(error);
   return (
     <>
       {weatherDetails ? (
         <div>
-          <WeatherDetails data={weatherDetails} searchNewCity={handleNewCity} />
+          <WeatherDetails
+            data={weatherDetails}
+            searchNewCity={handleNewCity}
+            error={error}
+          />
         </div>
       ) : (
         <div className="text-center flex h-screen">
