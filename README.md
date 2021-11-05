@@ -5,9 +5,7 @@ A Weather App to know the weather, time and date of different cities using the [
 ## Screenshots
 
 [Demo Video](https://share.getcloudapp.com/v1ujY8O8)
-![Weather App](![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
-
-)
+![Weather App](https://share.getcloudapp.com/qGuRJdr8)
 
 ## Tech/framework used
 
